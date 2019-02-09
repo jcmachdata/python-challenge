@@ -50,7 +50,8 @@ with open(csvpath, newline='') as csvfile:
             minPcnt = int(row[1])
 
 #calculate average change            
-avgchange = (int(lastprofit) - int(beginprofit))/85    
+avgchange = (int(lastprofit) - int(beginprofit))/85  
+avgchange = round(avgchange,2)
 
 #display results
 print("Financial Analysis")        
@@ -78,3 +79,4 @@ with open(output_path, 'w', newline='') as pybankfile:
     csvwriter.writerow([f"Average  Change: ${avgchange}"])
     csvwriter.writerow([f"Greatest Increase in Profits: {maxMonth}: $({maxSpread})"])
     csvwriter.writerow([f"Greatest Decrease in Profits: {minMonth}: $({minSpread})"])
+    
