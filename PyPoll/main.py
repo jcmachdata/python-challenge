@@ -19,6 +19,7 @@ with open(csvpath, newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     csv_header = next(csvreader)
     
+    #calculate total number of votes, and number of votes per candidate
     cnt=0
     for row in csvreader:
         cnt +=1
@@ -30,7 +31,8 @@ with open(csvpath, newline='') as csvfile:
             liVote = liVote + 1
         elif row[2] == "O'Tooley":
             otooleyVote = otooleyVote + 1
-            
+    
+    #determine election winner
     if khanVote > correyVote and khanVote > liVote and khanVote > otooleyVote:
         winner = "Khan"
     elif correyVote > khanVote and correyVote > liVote and correyVote > otooleyVote:
@@ -40,11 +42,18 @@ with open(csvpath, newline='') as csvfile:
     else:
         winner = "O'Tooley"
 
+#calculate percentage of popular votes each candidate received
 khanVotePer = (khanVote / cnt) * 100
 correyVotePer = (correyVote / cnt) * 100
 liVotePer = (liVote / cnt) * 100
 otooleyVotePer = (otooleyVote / cnt) * 100
 
+khanVotePer = round(khanVotePer,3)
+correyVotePer = round(correyVotePer,3)
+liVotePer = round(liVotePer,3)
+otooleyVotePer = round(otooleyVotePer,3)
+
+#display election results
 print("Election Results")
 print("-------------------------")
 print(f"Total Votes: {cnt}")
@@ -60,7 +69,7 @@ print("-------------------------")
 # Specify the file to write to
 output_path = os.path.join("pypollresults.txt")
 
-# Open the file using "write" mode. Specify the variable to hold the contents
+# Write results to file
 with open(output_path, 'w', newline='') as pypollfile:
 
     # Initialize csv.writer
