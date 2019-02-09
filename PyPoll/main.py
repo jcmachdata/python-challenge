@@ -43,25 +43,26 @@ with open(csvpath, newline='') as csvfile:
         winner = "O'Tooley"
 
 #calculate percentage of popular votes each candidate received
-khanVotePer = (khanVote / cnt) * 100
-correyVotePer = (correyVote / cnt) * 100
-liVotePer = (liVote / cnt) * 100
-otooleyVotePer = (otooleyVote / cnt) * 100
+khanVotePer = (khanVote / cnt)
+correyVotePer = (correyVote / cnt)
+liVotePer = (liVote / cnt)
+otooleyVotePer = (otooleyVote / cnt)
 
-khanVotePer = round(khanVotePer,3)
-correyVotePer = round(correyVotePer,3)
-liVotePer = round(liVotePer,3)
-otooleyVotePer = round(otooleyVotePer,3)
+khanVotePer = ("{:.3%}".format(khanVotePer))
+correyVotePer = ("{:.3%}".format(correyVotePer))
+liVotePer = ("{:.3%}".format(liVotePer))
+otooleyVotePer = ("{:.3%}".format(otooleyVotePer))
+
 
 #display election results
 print("Election Results")
 print("-------------------------")
 print(f"Total Votes: {cnt}")
 print("-------------------------")
-print(f"Khan: {khanVotePer}% ({khanVote})")
-print(f"Correy: {correyVotePer}% ({correyVote})")
-print(f"Li: {liVotePer}% ({liVote})")
-print(f"O'Tooley: {otooleyVotePer}% ({otooleyVote})")
+print(f"Khan: {khanVotePer} ({khanVote})")
+print(f"Correy: {correyVotePer} ({correyVote})")
+print(f"Li: {liVotePer} ({liVote})")
+print(f"O'Tooley: {otooleyVotePer} ({otooleyVote})")
 print("-------------------------")
 print(f"Winner: {winner}")
 print("-------------------------")
